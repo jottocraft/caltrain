@@ -67,7 +67,7 @@ var alerts = [];
       console.log(train)
       load();
     })
-	$.getJSON("http://api.511.org/transit/servicealerts?api_key=05c0e41a-ff3a-46fc-a69c-2f974ef45741&format=json&agency=CT", function(data) {
+	$.getJSON("https://api.511.org/transit/servicealerts?api_key=05c0e41a-ff3a-46fc-a69c-2f974ef45741&format=json&agency=CT", function(data) {
 	alerts = [];
 	for (var i = 0; i < data["_entity"].length; i++) {
 	if (data["_entity"][i]["_alert"]["_informed_entity"][0]["_agency_id"] == "CT") {
