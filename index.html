@@ -1,99 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<style>
-body {
-background-color: #17191c !important;
-}
-</style>
-  <link rel="shortcut icon" href="favicon.png" type="image/png">
 
-  <!--Import Google Icon Font-->
-       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-       <link type="text/css" rel="stylesheet" href="fluid.css"  media="screen,projection"/>
-       <link type="text/css" rel="stylesheet" href="https://storage.googleapis.com/non-spec-apps/mio-icons/latest/outline.css"  media="screen,projection"/>
-       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-  <!-- CSS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
 
-  <!--OpenGraph -->
-  <meta property="og:url" content="https://caltrain.jottocraft.com" />
-  <meta property="og:title" content="Caltrain Live" />
-  <meta property="og:description" content="See every Caltrain in realtime" />
-  <meta property="og:image" content="https://fluid.js.org/icon.png" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Extended" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jottocraft.com/fluid/v4.min.css"
+        media="screen,projection" />
 
-  <meta charset="utf-8">
-  <title>Caltrain Live</title>
-<meta name="description" content="">
-  <meta name="author" content="jottocraft">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!--OpenGraph -->
+    <meta property="og:url" content="https://caltrain.jottocraft.com" />
+    <meta property="og:title" content="Caltrain Live" />
+    <meta property="og:description" content="See every Caltrain in realtime" />
+    <meta property="og:image" content="https://caltrain.jottocraft.com/logo.png" />
 
+    <title>Caltrain Live</title>
 
+    <meta charset="utf-8">
+    <meta name="description" content="See every Caltrain in realtime">
+    <meta name="author" content="jottocraft">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script async src="https://cdn.jottocraft.com/fluid/assets/tinycolor.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jottocraft.com/fluid/v4.min.js"></script>
+
+    <style>
+        /* Header */
+        #header {
+            color: var(--elementText);
+            padding: 100px;
+            padding-bottom: 120px;
+            margin-bottom: 125px;
+            text-align: center;
+        }
+
+        #header h1 {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .title img {
+            height: 98px;
+            vertical-align: middle;
+            margin-right: 22px;
+        }
+
+        #header .title {
+            margin-bottom: 40px;
+        }
+
+        /* Content Blocks */
+        .block {
+            overflow: hidden;
+            margin-bottom: 200px;
+        }
+
+        .container .block .description>*:nth-child(1) {
+            margin-top: 0px;
+        }
+
+        .container .block .description>*:nth-last-child(1) {
+            margin-bottom: 0px;
+        }
+
+        .container .block .description p {
+            font-size: 20px;
+            color: var(--lightText);
+        }
+
+        /* Large content blocks */
+        .container .block:not(.small)>img {
+            width: 28%;
+            max-width: 250px;
+        }
+
+        .container .block:not(.small)>.description {
+            overflow: hidden;
+        }
+
+        .container .block:not(.small):nth-child(odd)>img,
+        .container .block.left:not(.small):nth-child(even)>img {
+            float: left;
+            margin-right: 48px;
+            margin-left: 0;
+        }
+
+        .container .block:not(.small):nth-child(even)>img,
+        .container .block.right:not(.small):nth-child(odd)>img {
+            float: right;
+            margin-left: 48px;
+            margin-right: 0;
+        }
+
+        .container .block:not(.small) .description h3 {
+            font-size: 2.6rem;
+        }
+
+        /* Small content blocks */
+        .container .block.small .description h3 {
+            font-size: 2.2rem;
+        }
+
+        .container .block.small {
+            text-align: center;
+            display: inline-block;
+        }
+
+        .container .block.small img {
+            height: 150px;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 
-<body class="dark">
 
+<body>
 
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="fluid.js"></script>
+    <div id="header">
+        <div class="content">
+            <div class="title">
+                <img src="icon.png" />
+                <h1>Caltrain Live</h1>
+            </div>
+            <div class="row">
+                <button class="btn"><i class="material-icons">play_prism</i> Get it on Google Play</button>
+            </div>
+        </div>
+    </div>
 
-<style>
-.trip .arr {
-  float: right;
-}
-.trip .dep {
-  float: left;
-}
-.trip .train {
-  background-color: red;
-  color: red;
-  transition: all 0.5s;
-  user-select: none;
-}
-.trip .train.arrived {
-  background-color: green !important;
-  color: green !important;
-}
-.trip .track {
-  display:inline-block;
-  background-color: black;
-  width: 100%;
-}
-.download {
-color: #cccccc;
-font-size: 24px;
-font-weight: bold;
-}
-</style>
+    <div class="container">
+        <div class="row">
+            <div class="block small six columns">
+                <img src="assets/subway.svg" />
+                <div class="description">
+                    <h3>See every train</h3>
+                    <p>Caltrain Live shows you every active Caltrain at a glance, with realtime delay data</p>
+                </div>
+            </div>
 
-<div class="container" style="margin-top: 100px; text-align: center; padding: ">
-<img src="favicon.png" style="width: 120px;" />
-<h1>Caltrain Live</h1>
-<div style="margin-bottom: 200px;">
-<a href="https://play.google.com/store/apps/details?id=com.jottocraft.train" class="download">Get it on Google Play</a>
-</div>
-<div style="margin-right: 100px; display: inline-block; vertical-align: middle; text-align: left; width: calc(100% - 500px);">
-<h3>See every train</h3>
-<h5 style="color: #cccccc;">With Caltrain Live, you can see an estimated location of every Caltrain in real time</h5>
-</div>
-<img src="promo3.webp" style="width: 300px; border-radius: 15px; display: inline-block; vertical-align: middle;" />
-<div style="margin: 200px 0px;"></div>
-<img src="promo2.webp" style="width: 300px; border-radius: 15px; display: inline-block; vertical-align: middle;" />
-<div style="margin-left: 100px; display: inline-block; vertical-align: middle; text-align: left; width: calc(100% - 500px);">
-<h3>Detailed information</h3>
-<h5 style="color: #cccccc;">Caltrain Live tells you if a train uses the newer Bombardier cars or the older Nippon Sharyo gallery cars</h5>
-</div>
-  <br /><br /><br /><br /><br />
-<div style="text-align: center; padding: 50px 0px;">
-  <img style="height: 45px; margin-right: 20px; vertical-align: middle;" src="https://cdn.jottocraft.com/images/footerImage.png" />
-  <h5 style="display: inline-block; vertical-align: middle;">jottocraft</h5>
-  <p>(c) jottocraft 2018-2020. All rights reserved.&nbsp;&nbsp;<a href="https://github.com/jottocraft/caltrain/blob/master/LICENSE">license</a></p>
-  </div>
-</div>
+            <div class="block small six columns">
+                <img src="assets/timetable.svg" />
+                <div class="description">
+                    <h3>Timetable</h3>
+                    <p>Caltrain Live keeps the latest timetable on your device, so you can see scheduled trains without internet or plan a trip</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="block left">
+            <img src="assets/data.svg" />
+            <div class="description">
+                <h3>Detailed information</h3>
+                <ul>
+                    <li>Caltrain Live tells you how many cars each train should have and if it uses the newer Bombardier equipment</li>
+                    <li>Distance between stations is to scale</li>
+                    <li>Delay data is updated every minute</li>
+                    <li>See delays for each stop to the second</li>
+                    <li>See when your train will pass another train</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <br /><br /><br /><br />
+    <div style="text-align: center; padding: 50px 0px;">
+        <img style="height: 45px; margin-right: 20px; vertical-align: middle;"
+            src="https://cdn.jottocraft.com/images/footerImage.png" />
+        <h5 style="display: inline-block; vertical-align: middle;">jottocraft</h5>
+        <p>(c) jottocraft 2018-2020. All rights reserved.</p>
+    </div>
 
 </body>
+
 </html>
